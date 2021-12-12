@@ -40,38 +40,38 @@ jobs:
     strategy:
       matrix:
         variant:
-          -tasmota-tls
-          -tasmota-gps
-          -tasmota-battery
-          -tasmota-scripting
-          -tasmota-mega
-          -tasmota-allsensors
-          -tasmota-teleinfo
-          -tasmota-thermostat
-          -tasmota-rangeextender
-          -tasmota-fullrules
-          -tasmota-platinum
-          -tasmota-minicustom
-          -tasmota32-teleinfo
-          -tasmota32-thermostat
-          -tasmota32solo1-thermostat
-          -tasmota32-tls
-          -tasmota32-zigbee
-          -tasmota32-zigbeebridge
-          -tasmota32-gps
-          -tasmota32-battery
-          -tasmota32-scripting
-          -tasmota32-mega
-          -tasmota32-allsensors
-          -tasmota32-ethernet
-          -tasmota32-fullrules
-          -tasmota32-platinum
-          -tasmota32-minicustom
-          -tasmota32-udisplay
-          -tasmota32-rangeextender
-          -tasmota32c3
-          -tasmota32c3-bluetooth
-          -tasmota32s2
+          - tasmota-tls
+          - tasmota-gps
+          - tasmota-battery
+          - tasmota-scripting
+          - tasmota-mega
+          - tasmota-allsensors
+          - tasmota-teleinfo
+          - tasmota-thermostat
+          - tasmota-rangeextender
+          - tasmota-fullrules
+          - tasmota-platinum
+          - tasmota-minicustom
+          - tasmota32-teleinfo
+          - tasmota32-thermostat
+          - tasmota32solo1-thermostat
+          - tasmota32-tls
+          - tasmota32-zigbee
+          - tasmota32-zigbeebridge
+          - tasmota32-gps
+          - tasmota32-battery
+          - tasmota32-scripting
+          - tasmota32-mega
+          - tasmota32-allsensors
+          - tasmota32-ethernet
+          - tasmota32-fullrules
+          - tasmota32-platinum
+          - tasmota32-minicustom
+          - tasmota32-udisplay
+          - tasmota32-rangeextender
+          - tasmota32c3
+          - tasmota32c3-bluetooth
+          - tasmota32s2
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
