@@ -35,6 +35,7 @@ jobs:
         branch: 'special_builder'
 
   special-images:
+    needs: [tasmota_pull]
     runs-on: ubuntu-latest
     continue-on-error: true
     strategy:
