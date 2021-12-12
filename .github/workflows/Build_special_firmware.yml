@@ -34,7 +34,7 @@ jobs:
         github_token: ${{ secrets.MASTER_ACCESS_TOKEN }}
         branch: 'special_builder'
 
-  special-images:
+  special:
     needs: [tasmota_pull]
     runs-on: ubuntu-latest
     continue-on-error: true
@@ -91,7 +91,7 @@ jobs:
 
 
   Upload:
-    needs: [special-images]
+    needs: [special]
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
