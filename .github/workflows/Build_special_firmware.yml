@@ -74,6 +74,8 @@ jobs:
           - tasmota32s2
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: special_builder
       - name: Set up Python
         uses: actions/setup-python@v1
       - name: Install dependencies
