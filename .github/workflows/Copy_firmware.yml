@@ -1,0 +1,61 @@
+name: Copy_firmware
+
+on:
+  workflow_dispatch:
+  push:
+    branches: copy_firmware
+    paths-ignore:
+    - '.github/**' # Ignore changes towards the .github directory
+
+
+jobs:
+  copycat:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: firmware
+    - name: Build commit message
+      id: step_one
+      run: |
+        tas_com_tmp1=$(curl https://raw.githubusercontent.com/arendst/Tasmota-firmware/action-development/trigger.txt)
+        tas_com_tmp="Based on https://github.com/arendst/Tasmota/commit/${tas_com_tmp1}"
+        echo "tas_com=$tas_com_tmp" >> $GITHUB_ENV
+    - name: copycat tasmota
+      uses: andstor/copycat-action@v3
+      with:
+        personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        src_path: firmware/tasmota/other/.
+        src_branch: firmware
+        dst_path: firmware/unofficial
+        dst_owner: tasmota
+        dst_branch: main
+        dst_repo_name: install
+        username: workflow
+        commit_message: ${{ env.tas_com }}
+
+  copycat32:
+    needs: copycat
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: firmware
+    - name: Build commit message
+      id: step_one
+      run: |
+        tas_com_tmp1=$(curl https://raw.githubusercontent.com/arendst/Tasmota-firmware/action-development/trigger.txt)
+        tas_com_tmp="Based on https://github.com/arendst/Tasmota/commit/${tas_com_tmp1}"
+        echo "tas_com=$tas_com_tmp" >> $GITHUB_ENV
+    - name: copycat tasmota32
+      uses: andstor/copycat-action@v3
+      with:
+        personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        src_path: firmware/tasmota32/other/.
+        src_branch: firmware
+        dst_path: firmware/unofficial
+        dst_owner: tasmota
+        dst_branch: main
+        dst_repo_name: install
+        username: workflow
+        commit_message: ${{ env.tas_com }}
